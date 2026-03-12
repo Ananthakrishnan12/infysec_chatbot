@@ -604,10 +604,6 @@ async def chat(req: ChatRequest):
             "session_id": session_id,
             "course": course,
             "quick_links": [
-                {"label": "⭐ Key Features", "value": f"Show key features of {course['title']}"},
-                {"label": "🧠 Skills Covered", "value": f"Show skills covered in {course['title']}"},
-                {"label": "📑 Modules", "value": f"Show modules of {course['title']}"},
-                {"label": "💰 Pricing", "value": f"Show pricing of {course['title']}"},
                 {"label": "⬅ Back to Course Category", "value": "Show Course Category"},
                 {"label": "🏠 Back to Home", "value": "hi"}
             ]
