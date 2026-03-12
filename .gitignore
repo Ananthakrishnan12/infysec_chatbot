@@ -12,6 +12,7 @@ venv/
 env/
 .venv/
 ENV/
+Infysec_chatbot/
 
 # ==========================================
 # Environment Variables
