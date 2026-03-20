@@ -155,7 +155,8 @@ async def list_courses_by_category_name(question: str):
     # Find exact matching category
     async for cat in categories.find({"isDeleted": False}):
 
-        if cat["name"].lower() == category_query:
+        # if cat["name"].lower() == category_query:
+        if cat["name"].lower() in category_query:
             selected_category = cat
             break
 
@@ -243,7 +244,7 @@ async def get_course_details_by_name(question: str):
 
     async for doc in courses.find({"isDeleted": False}):
 
-        if doc["title"].lower() in question_lower:
+        if any(word in question_lower for word in doc["title"].lower().split()):
 
             voucher_list = []
 
