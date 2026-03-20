@@ -100,46 +100,6 @@ async def list_courses_by_category_id(category_id: str):
 
     return serialize_mongo(data)
 
-
-# =====================================================
-# COURSES UNDER CATEGORY (TEXT MATCH SUPPORT)
-# =====================================================
-# async def list_courses_by_category_name(question: str):
-
-#     question_lower = question.lower()
-#     selected_category = None
-
-#     async for cat in categories.find({"isDeleted": False}):
-
-#         if cat["name"].lower() in question_lower:
-#             selected_category = cat
-#             break
-
-#     if not selected_category:
-#         return []
-
-#     data = []
-
-#     async for doc in courses.find({
-#         "category": selected_category["_id"],
-#         "isDeleted": False
-#     }):
-
-#         title = doc["title"]
-
-#         data.append({
-#             "_id": doc["_id"],
-#             "title": title,
-#             "description": doc.get("description", ""),
-#             "quick_link": {
-#                 "label": f"View Details of {title}",
-#                 "value": str(doc["_id"])
-#             }
-#         })
-
-#     return serialize_mongo(data)
-
-
 async def list_courses_by_category_name(question: str):
 
     question_lower = question.lower().strip()
@@ -534,45 +494,6 @@ async def list_upcoming_bootcamps():
 
     return serialize_mongo(data)
 
-
-
-# async def list_upcoming_bootcamps():
-
-#     now = datetime.now(timezone.utc)
-#     data = []
-
-#     async for doc in bootcamps.find({
-#         "isDeleted": False,
-#         "status": "active"
-#     }):
-
-#         start = doc["startDate"]
-#         end = doc["endDate"]
-
-#         # Ensure timezone aware
-#         if start.tzinfo is None:
-#             start = start.replace(tzinfo=timezone.utc)
-
-#         if end.tzinfo is None:
-#             end = end.replace(tzinfo=timezone.utc)
-
-#         # ✅ FIX: allow ongoing + upcoming
-#         if end >= now:
-
-#             title = doc["title"]
-
-#             data.append({
-#                 "_id": doc["_id"],
-#                 "title": title,
-#                 "startDate": start,
-#                 "endDate": end,
-#                 "quick_link": {
-#                     "label": f"View Bootcamp Details: {title}",
-#                     "value": f"bootcamp:{doc['_id']}"
-#                 }
-#             })
-
-#     return serialize_mongo(data)
 
 # =====================================================
 # BOOTCAMP DETAILS
