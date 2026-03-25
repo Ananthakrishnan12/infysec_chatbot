@@ -76,14 +76,23 @@ async def chat(req: ChatRequest):
         if course:
             memory["last_course_id"] = course_id
 
+            # return {
+            #     "session_id": session_id,
+            #     "course": course,
+            #     "quick_links": [
+            #         {"label": "⭐ Key Features", "value": "Show key features"},
+            #         {"label": "🧠 Skills Covered", "value": "Show skills"},
+            #         {"label": "📑 Modules", "value": "Show modules"},
+            #         {"label": "💰 Pricing", "value": "Show pricing"},
+            #         {"label": "⬅ Back to Course Category", "value": "Show Course Category"},
+            #         {"label": "🏠 Back to Home", "value": "hi"}
+            #     ]
+            # }
+            
             return {
                 "session_id": session_id,
                 "course": course,
                 "quick_links": [
-                    {"label": "⭐ Key Features", "value": "Show key features"},
-                    {"label": "🧠 Skills Covered", "value": "Show skills"},
-                    {"label": "📑 Modules", "value": "Show modules"},
-                    {"label": "💰 Pricing", "value": "Show pricing"},
                     {"label": "⬅ Back to Course Category", "value": "Show Course Category"},
                     {"label": "🏠 Back to Home", "value": "hi"}
                 ]
